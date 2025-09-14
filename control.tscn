@@ -1,0 +1,214 @@
+[gd_scene load_steps=3 format=3 uid="uid://barchto3ho3ce"]
+
+[ext_resource type="Script" uid="uid://bxe8y04ws2csd" path="res://control.gd" id="1_0fbet"]
+[ext_resource type="Texture2D" uid="uid://bkogxjpdjr8g4" path="res://circle.png" id="2_62e2m"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -179.5
+offset_right = 179.5
+offset_bottom = 106.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 20
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Left" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" groups=["controls"]]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Left"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="CentreLength" type="HSlider" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Left/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 50.0
+max_value = 150.0
+value = 100.0
+
+[node name="Left1" type="HSlider" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Left/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 180.0
+
+[node name="Right1" type="HSlider" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Left/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 180.0
+
+[node name="Left2_slider" type="HSlider" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Left/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+max_value = 180.0
+
+[node name="Right2_slider" type="HSlider" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Left/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+max_value = 180.0
+
+[node name="Right" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Right"]
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Right/VBoxContainer" groups=["controls"]]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Right-Click and drag to rotate
+second centre prong
+New sliders rotate arms"
+text = "Second Shaft"
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Right/VBoxContainer" groups=["controls"]]
+layout_mode = 2
+text = "WHere is this?"
+color = Color(1, 1, 1, 1)
+
+[node name="HideControls" type="CheckButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Right/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Hide Controls"
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -170.5
+offset_top = -228.0
+offset_right = 170.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 15
+
+[node name="Instructions" type="PanelContainer" parent="MarginContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/Instructions"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer2/Instructions/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer2/Instructions/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Top slider controls centre prong length
+
+The next two control arm rotation
+
+Hold left-click and move mouse to 
+rotate centre prong
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="MarginContainer2/Instructions/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Go Go Gender!"
+
+[node name="Main" type="Node2D" parent="."]
+position = Vector2(0, 150)
+script = ExtResource("1_0fbet")
+
+[node name="Circle" type="Sprite2D" parent="Main" groups=["parts"]]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+position = Vector2(200, 200)
+texture = ExtResource("2_62e2m")
+
+[node name="Centre" type="Line2D" parent="Main" groups=["parts"]]
+unique_name_in_owner = true
+visible = false
+position = Vector2(200, 200)
+rotation = -0.785398
+points = PackedVector2Array(50, 0, 100, 0)
+begin_cap_mode = 1
+end_cap_mode = 2
+
+[node name="Right" type="Line2D" parent="Main/Centre" groups=["parts"]]
+unique_name_in_owner = true
+position = Vector2(85, -15)
+points = PackedVector2Array(-15, -15, 15, 15)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Left" type="Line2D" parent="Main/Centre" groups=["parts"]]
+unique_name_in_owner = true
+position = Vector2(85, 15)
+points = PackedVector2Array(-15, 15, 15, -15)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Centre2" type="Line2D" parent="Main" groups=["parts"]]
+unique_name_in_owner = true
+visible = false
+z_index = -1
+position = Vector2(200, 200)
+rotation = 1.5708
+points = PackedVector2Array(50, 0, 100, 0)
+begin_cap_mode = 1
+end_cap_mode = 2
+
+[node name="Right2" type="Line2D" parent="Main/Centre2" groups=["parts"]]
+unique_name_in_owner = true
+position = Vector2(85, -15)
+rotation = 0.785398
+points = PackedVector2Array(-15, -15, 15, 15)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Left2" type="Line2D" parent="Main/Centre2" groups=["parts"]]
+unique_name_in_owner = true
+position = Vector2(85, 15)
+rotation = 2.35619
+points = PackedVector2Array(-15, 15, 15, -15)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[connection signal="value_changed" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Left/VBoxContainer/CentreLength" to="Main" method="_on_centre_length_value_changed"]
+[connection signal="value_changed" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Left/VBoxContainer/Left1" to="Main" method="_on_left_1_value_changed"]
+[connection signal="value_changed" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Left/VBoxContainer/Right1" to="Main" method="_on_right_1_value_changed"]
+[connection signal="value_changed" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Left/VBoxContainer/Left2_slider" to="Main" method="_on_left_2_value_changed"]
+[connection signal="value_changed" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Left/VBoxContainer/Right2_slider" to="Main" method="_on_right_2_value_changed"]
+[connection signal="toggled" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Right/VBoxContainer/CheckButton" to="Main" method="_on_check_button_toggled"]
+[connection signal="color_changed" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Right/VBoxContainer/ColorPickerButton" to="Main" method="_on_color_picker_button_color_changed"]
+[connection signal="toggled" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Right/VBoxContainer/HideControls" to="Main" method="_on_check_button_2_toggled"]
+[connection signal="pressed" from="MarginContainer2/Instructions/MarginContainer/HBoxContainer/Button" to="Main" method="_on_button_pressed"]
